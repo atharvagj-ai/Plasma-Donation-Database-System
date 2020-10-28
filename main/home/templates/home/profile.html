@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{%block body%}
+
+{% if user.is_authenticated %}
+
+<h1> {{user.first_name}} </h1>
+<h2> Registration ID:  {{user.username}} </h2>
+<h2>City : {{user.city}}</h2>
+
+{% endif %}
+{%endblock%}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{% csrf_token %}
+<body>
+<section class="container text-center">
+    <h3 style="color: lightgreen;">Thanks for Donating <h1 style="color: royalblue;">{{ donor.fname }}</h1> </h3>
+    <h4>Your Registration ID is: {{donor.id}} </h4>
+</section>    
+</body>
+
+{% endblock %}

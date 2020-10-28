@@ -1,0 +1,138 @@
+body{
+	background-image: url("https://image.freepik.com/free-vector/healthcare-background-with-medical-symbols-hexagonal-frame_1017-26363.jpg");
+	background-position: center;
+	background-size: cover;
+	/* transition: all 5s unset; */
+	/* background-color: rgba(0,0,0,0.5); */
+}
+
+header{
+	/* margin-top: 20px; */
+	margin-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+header h1{
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	position: relative;
+	padding-bottom: 10px;
+	color: white;
+}
+header h1::before{
+	content: '';
+	bottom: 0px;
+	left: 33%;
+	right: 33%;
+	background-color: #fff;
+	position: absolute;
+	height: 3px;
+}
+
+.div-title{
+	flex: 0 0 100%;
+	max-width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-bottom: 20px;
+	/*background-color: blue;*/
+	text-align: center;
+	color: white;
+}
+.div-title h2{
+	letter-spacing: 2px;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+.search-box{
+	/* background-color: blue; */
+	padding-top: 10px;
+	padding-bottom: 10px;
+	flex: 0 0 100%;
+	max-width: 100%;
+	/* padding-left: 15%; */
+}
+.icon{
+	/* background-color: red; */
+	 flex:  0 0 33%; 
+	 text-align: right; 
+}
+.input{
+	/* background-color: green; */
+	width: 50%;
+}
+.fa{
+	/* background-color: red; */
+	display: inline-block;
+	margin-right: 15px;
+	color: white;
+}
+.search-btn{
+	/* background-color: red; */
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	flex: 0 0 100%;
+	max-width: 100%;
+}
+/*
+.search-btn button:hover{
+	background-color: green;
+} */
+.window{
+    /*background-color: red;*/
+    margin-top: 10px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+}
+.window .window1{
+	display: block;
+	border: #000;
+	/*background-color: blue;*/
+	/*padding-left: 5px;
+	padding-right: 5px;
+	margin-left: 5px;
+	margin-right: 5px;*/
+}
+
+
+.donate{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	flex: 0 0 100%;
+	max-width: 100%;
+	/* background-color: red; */
+	text-align: center;
+
+}
+.btn1{
+	flex: 0 0 100%;
+	max-width: 100%;
+	text-align: center;
+	/* background-color: blue; */
+}
+.window1{
+	border: 2px solid black;
+	margin-right: 5px;
+	
+}
+.window2{
+	/* border-right: 2px solid black; */
+	margin-right: 5px;
+	
+}
+.window3{
+	/* border-right: 2px solid black; */
+	margin-right: 5px;
+	
+}
+.window3 h3{
+	color: red;
+}

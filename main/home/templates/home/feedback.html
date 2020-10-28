@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<body>
+
+    <!-- <h4>Please Enter your Feedback</h4> -->
+    <h3 style="margin-left: 20px;">ID: {{id}} </h3>
+
+        <h4 style="margin-left: 20px;">Please Enter your Feedback</h4>
+        <section class="container">
+            <h2 class="text-center my-3">Welcome {{fname}}</h2>
+            <form action="feedback" method="POST">
+                <input type="text" name="pbno" placeholder="Enter Plasma Bank Reg. Number" class="form-control col-6 my-2">
+                <!-- <input type="text" name="idno" value="{{id}}" class="form-control" disabled="disabled"> -->
+                <input type="text" name="ftitle" placeholder="Enter Feedback Title" class="form-control col-5 my-2">
+                <label>Rate Bank Services</label>
+                <select name="review" class="form-control col-2">
+                    <option value="good">Good</option>
+                    <option value="average">Average</option>
+                    <option value="bad">Bad</option>
+                </select>
+                <textarea name="feedback" id="" cols="30" rows="5" placeholder="Please Describe your experience briefly" class="form-control my-2 col-8"></textarea>
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+           
+        </section>
+     
+</body> 
+
+{% endblock %}

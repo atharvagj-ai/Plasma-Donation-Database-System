@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{%block body%}
+
+<body>
+    <section class="container">
+        {{user}}
+        {% for i in donor %}
+        {% if donor_pk == i.id %}
+        <h2>Enter feedback for {{i.fname }} </h2>
+        <h4>ID: {{i.id}} </h4>
+        <form action="/hosfeed/{{i.id}}" method="POST">
+            <!-- <label>Enter feedback</label> -->
+            <input type="text" name="pbno" placeholder=" Plasma Bank Reg. Number" class="form-control col-6 my-2">
+            <input type="text" name="hos" value="{{user.username}}" class="form-control col-6 my-2">
+            <input type="text" name="ftitle" placeholder=" Title" class="form-control col-5 my-2">
+            <select name="review" class="form-control col-2">
+                <option value="good">Good</option>
+                <option value="average">Average</option>
+                <option value="bad">Bad</option>
+            </select>
+            <textarea name="hosfeed" cols="30" rows="5" placeholder="Enter Feedback" class="form-control my-2 col-8"></textarea>
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success my-3">Submit</button>
+        </form>
+        {%endif%}
+        {{donor.fname}}
+        {% endfor %}
+    </section>
+</body>
+{%endblock%}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+{% if user.is_authenticated %}
+<div class="row container">
+    <h2>Sorry, {{donor.fname}}'s sample is already taken</h2>
+
+{% else %}
+<h1>Please Login</h1>
+{% endif %}
+
+{% endblock %}

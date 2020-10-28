@@ -1,0 +1,264 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{% if user.is_authenticated %}
+
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/hospitalhome.css' %}">
+
+    <!-- <title> Plasma Bank</title> -->
+</head>
+{% if user.last_name == '0' %}
+
+{% csrf_token %}
+<body style="background-image: url('{% static 'images/doc_bg1.png' %}'); background-attachment: fixed; background-position: center; background-size: cover;">
+<section style="background-color: rgba(0,0, 0, 0.6);">
+    <!-- {% for i in status %}
+    {{i.id}}
+    {% endfor %} -->
+    <h2 class="text-center text-white">Hospital</h2>
+    <h1 class="text-center text-white font-weight-bold">Welcome {{user.first_name}} </h1>
+    <h3 style="margin: 20px;" class="text-white">Number of Donors you Need</h3>
+    {% for i in don %}
+    {% csrf_token %}
+    {% if user.id == i.user_id %}
+    <h4 style="color: wheat; margin: 20px;"> {{user.first_name}} : {{i.number}} </h4>
+    {%else%}
+    <!-- <h4>Please enter a number</h4> -->
+    {%endif%}
+
+    {% endfor %}
+    <button type="button" class="btn btn-primary text-center" style="margin-right: 10px; margin-left: 20px;" data-toggle="modal"
+                data-target="#edit">
+                Edit
+    </button>
+    <div class="modal fade" id="edit" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Edit number of Donor</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="home" method="POST">
+                                <h4>Please login again to edit!</h4>
+                                <input type="text" value="{{user}}" name="dname"  class="form-control">
+                                <input type="password" name="passhome" placeholder="Enter Password" class="form-control">
+                                <input type="text" placeholder="Enter the number" name="donorno" class="form-control">
+                                <div class="text-center">
+                                    {% csrf_token %}
+                                    <button class="btn btn-primary my-2" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <div class="container text-center">
+        <div class="">
+            <h1 class="text-center text-white font-weight-bold" >LIST OF DONORS</h1>
+            {% for o in obj %}
+            
+            
+{% if hosuser.city == o.city %}
+                    
+<div class="card col-lg-3 text-white" style="display:inline-flex ; background-color: rgba(0,0, 0, 0.7); margin: 25px;">
+                {% if o.gender == 'Male' %}
+                    <img class="card-img-top rounded-circle img-thumbnail w-50" style="margin-left: 60px;" src="https://image.flaticon.com/icons/svg/1466/1466102.svg" alt="Card image cap" >
+                    {% else %}
+                    <img class="card-img-top rounded-circle img-thumbnail w-50" style="margin-left: 60px;" src="https://image.flaticon.com/icons/svg/1466/1466103.svg" alt="Card image cap" >
+                    {% endif %}
+                <div class="card-body">
+                  <!-- <h5 class="card-title">Donor</h5> -->
+                  <h6>ID : {{o.id}} </h6>
+                  <h4> {{o.fname|title}} {{o.lname|title}} </h4>
+                  <!-- <h6>Contact No. : {{o.mobile}} </h6> -->
+                  <h6>Gender : {{o.gender}} </h6>
+                  <h6>Blood Group : {{o.blood}} </h6>
+                  {% for ava in status %}
+                    {% if ava.donor_id == o.id %}
+                        <!-- <h4 class="success" style="color: lightgreen;">Availbale : {{ava.available}}</h4> -->
+                        {% if ava.available == True %}
+                            <h3 style="color: lightgreen;"> Available  </h3>
+                        {% else %}
+                            <h3 style="color: lightcoral;"> Not Available  </h3>
+                        {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                  <div class="row text-center justify-content-between">
+                    <a href=" {% url 'donorprofile' o.id %} " class="btn btn-primary my-2 mx-2">Profile</a>
+                    <!-- <a href="" class="btn btn-danger mx-2">Delete</a> -->
+                    <a href="{% url 'requests' o.id user.id %}" class="btn btn-success mx-2 my-2">Request</a>                  
+                    <a href="{% url 'hosfeed' o.id %}" class="btn btn-success mx-2 my-2">Feedback</a>                  
+                  </div>
+                  <!-- <form action="donorprofile" method="GET">
+                      <input type="text" placeholder="id" name="donor_id">
+                      <input type="submit">
+                  </form> -->
+                </div>
+            </div>                
+
+            {% endif %}
+            
+            {% endfor %}
+        </div>
+    </div>
+    <div class="modal fade" id="deletepro" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST">
+                    <h4>Are you sure to delete?</h4>
+                    {% csrf_token %}
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </section>
+
+</body>
+
+{% endif %}
+
+{% if user.last_name == '1' %}
+    <body style="background-image: url('{% static 'images/doc_bg1.png' %}'); background-attachment: fixed; background-position: center; background-size: cover;">
+
+    <section class="" style="background-color: rgba(0,0, 0, 0.6);">
+        <h2 class="text-white">
+            Plasma Bank
+        </h2>
+
+        <h3 style="margin: 20px;" class="text-white">Number of Donors Available</h3>
+        {% for i in don1 %}
+        {% csrf_token %}
+        {% if user.id == i.user_id %}
+        <h4 style="color: tomato; margin: 20px;"> {{user.first_name}} : {{i.number}} </h4>
+        {%else%}
+        <!-- <h4>Please enter a number</h4> -->
+        {%endif%}
+    
+        {% endfor %}
+
+        <button type="button" class="btn btn-primary text-center" style="margin-right: 10px; margin-left: 20px;" data-toggle="modal"
+        data-target="#edit">
+        Edit
+</button>
+<div class="modal fade" id="edit" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Edit number of Donor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="home" method="POST">
+                        <h4>Please login again to edit!</h4>
+                        <input type="text" value="{{user}}" name="dname"  class="form-control">
+                        <input type="password" name="passhome" placeholder="Enter Password" class="form-control">
+                        <input type="text" placeholder="Enter the number" name="donorno" class="form-control">
+                        <div class="text-center">
+                            {% csrf_token %}
+                            <button class="btn btn-primary my-2" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <h1 style="letter-spacing: 2px;" class="text-center font-weight-bold text-white">Welcome {{user.first_name}} </h1>
+        <div class=" text-center">
+            <div class="container">
+                <h2 class="text-center text-white" >LIST OF DONORS</h2>
+                
+                {% for o in obj %}
+                {% if hosuser.city == o.city %}
+                                    
+                <div class="card col-lg-3 text-white" style="display:inline-flex ; background-color: rgba(0,0, 0, 0.7); margin: 25px;">
+                    {% if o.gender == 'Male' %}
+                    <img class="card-img-top rounded-circle img-thumbnail w-50" style="margin-left: 60px;" src="https://image.flaticon.com/icons/svg/1466/1466130.svg" alt="Card image cap" >
+                    {% else %}
+                    <img class="card-img-top rounded-circle img-thumbnail w-50" style="margin-left: 60px;" src="https://image.flaticon.com/icons/svg/1466/1466137.svg" alt="Card image cap" >
+                    {% endif %}
+                    <div class="card-body">
+                    <!-- <h5 class="card-title">Donor</h5> -->
+                    <!-- <h6>ID : {{o.id}} </h6> -->
+                    <h4>{{o.fname|title}} {{o.lname|title}} </h4>
+                    <!-- <h6>Contact No. : {{o.mobile}} </h6> -->
+                    <h6>{{o.gender}} </h6>
+                    <h6>Blood Group : {{o.blood}} </h6>
+                    {% for ava in status %}
+                    {% if ava.donor_id == o.id %}
+                        <!-- <h4 class="success" style="color: lightgreen;">Availbale : {{ava.available}}</h4> -->
+                        {% if ava.available == True %}
+                            <h3 style="color: lightgreen;"> Available  </h3>
+                        {% else %}
+                            <h3 style="color: lightcoral;"> Not Available  </h3>
+                        {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                    <div class="row text-center">
+                        <a href=" {% url 'donorprofile' o.id %} " class="btn btn-primary my-2 mx-2">Profile</a>
+                        <!-- <a href="" class="btn btn-danger mx-2">Delete</a> -->
+                        <!-- <a href="{% url 'hosfeed' o.id %}" class="btn btn-success mx-2 my-2">Feedback</a> -->
+                        <a href="{% url 'bloodform' o.id %}" class="btn btn-success mx-2 my-2">Update Blood Deatils</a>
+                    </div>
+                    <!-- <form action="donorprofile" method="GET">
+                        <input type="text" placeholder="id" name="donor_id">
+                        <input type="submit">
+                    </form> -->
+                    </div>
+                </div>
+
+
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</body>
+
+{% else %}
+
+    <h1>Hello Manager</h1>
+    {% for i in donor_feed %}
+        <h3>{{i.ftitle}}</h3>
+    {%  endfor %}
+
+{% endif %}
+
+
+{% else %}
+
+<h4 style="color: red;">Please Login </h4>
+
+{% endif %}
+
+{% endblock %}
+
+
+
+
+<!-- write a cursor to select five highest head employees from the employee table -->

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+    
+{% if user.is_authenticated %}
+
+<h1>Requested for {{donor.fname}} </h1>
+
+{% else %}
+<h1>Please Login</h1>
+
+{% endif %}
+{% endblock %}

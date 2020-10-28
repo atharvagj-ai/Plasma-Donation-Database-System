@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+
+{% block body %}
+{% if user.is_authenticated %}
+<h1 style="padding-left: 50px;">{{obj1}} </h1>
+{% for i in donor %}
+    {% if i.id == donor_pk %}
+        <body class="">
+            <h2 class="text-center">Update Details of {{ i.fname}}'s Blood</h2>
+            <section class="container" style="padding-left: 180px; padding-top: 30px;">
+                <form action="" method="POST">
+                    <div class="row my-2">
+                        <label class="col-2">Blood Group</label>
+                        <input type="text" name="blood" value="{{i.blood}}" disabled = "disabled" >
+                        <!-- <select class="custom-select col-6" name="blood" >
+                            <option value="A+">A+</option><option value="A-">A-</option>
+                            <option value="B+">B+</option><option value="B-">B-</option>
+                            <option value="O+">O+</option><option value="O-">O-</option>
+                            <option value="AB+">AB+</option><option value="AB-">AB-</option>
+                        </select> -->
+                    </div>
+                    <div class="row">
+                        <label class="col-2">RH Type</label>
+                        <select name="rhtype" class="custom-select col-2">
+                            <option value="positive">Positive</option>
+                            <option value="negative">Negative</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <label class="col-2">Platelet Count</label>
+                        <input type="text" name="platelets" placeholder="Enter to fill" class="my-2 form-control col-6">
+                    </div>
+                    <div class="row">
+                        <label class="col-2">WBC Count</label>
+                        <input type="text" name="wbc" placeholder="Enter to fill" class="form-control my-2 col-6">
+                    </div>
+                    <div class="row">
+                        <label class="col-2">Antibodies Produced</label>
+                        <input type="text" name="antibody" placeholder="Enter to fill" class="form-control my-2 col-6">
+                    </div>
+                    {% csrf_token %} 
+                    <button class="btn btn-success" type="submit">Submit</button>
+                </form>
+            </section>
+        </body>
+    {% endif %}
+{% endfor %}
+{% endif %}
+{% endblock %}

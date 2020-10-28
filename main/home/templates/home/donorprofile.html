@@ -1,0 +1,327 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+
+{% if user.last_name == '1' %}
+<body>
+    {{temp.id}} 
+    <!-- <h1> {{pk}} </h1> -->
+    {% for o in obj %}
+    {% if pk == o.id %}
+    <div class="row m-auto container justify-content-between">
+      <div class="d-flex">
+        <h1 style="font-weight: bold; letter-spacing: 3px; font-size: 50px; ">{{o.fname}} {{o.lname}}</h1>
+      </div>
+      <div class="d-flex">
+        {% if status.available == True %}
+          <h1 class="text-success"> Available  </h1>
+        {% else %}
+          <h1 class="text-danger"> Not Available  </h1>
+        {% endif %}
+      </div>
+    </div>
+    <section class="container">
+          <h2 class="text-center" style="font-weight: bold;">Donor Details</h2>
+        <table class="table table-dark text-center" style="font-weight: bold; font-size: large;">
+            <thead>
+              <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ID</td>
+                    <td> {{o.id}} </td>
+                  </tr>
+              <tr style="margin: 2px;">
+                <!-- <th scope="row">1</th> -->
+                <td>Name</td>
+                <td> {{o.fname}} {{o.lname}} </td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">2</th> -->
+                <td>Blood Group</td>
+                <td> {{o.blood}} </td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">3</th> -->
+                <td>Contact</td>
+                <td>{{o.mobile}}</td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">4</th> -->
+                <td>Age</td>
+                <td>{{o.age}}</td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">5</th> -->
+                <td>Gender</td>
+                <td>{{o.gender}}</td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">6</th> -->
+                <td>City </td>
+                <td>{{o.city}}</td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">7</th> -->
+                <td>State</td>
+                <td>{{o.state}}</td>
+              </tr>
+              <tr>
+               
+            </tbody>
+          </table>
+          
+          <h3 style="font-weight:bold; margin: 10px;" class="text-center">Blood Details</h3>
+          <table class="table table-dark text-center" style="font-weight: bold; font-size: large;">
+            <thead>
+              <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ID</td>
+                    <td> {{temp.id}} </td>
+                  </tr>
+              <tr style="margin: 2px;">
+                <!-- <th scope="row">1</th> -->
+                <td>RH Type</td>
+                <td> {{temp.rhtype}} </td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">2</th> -->
+                <td>Blood Group</td>
+                <td> {{temp.blood_group}} </td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">3</th> -->
+                <td>Platelet Count</td>
+                <td>{{temp.plate}}</td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">4</th> -->
+                <td>WBC Count</td>
+                <td>{{temp.wbc}}</td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">5</th> -->
+                <td>Antibodies</td>
+                <td>{{temp.antibody}}</td>
+              </tr>
+               
+            </tbody>
+          </table>
+
+          <h3 style="font-weight:bold; margin: 10px;" class="text-center">Queries</h3>
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col">Query</th>
+                <th scope="col">Donor</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <!-- <th scope="row">8</th> -->
+                <td>Currently, Do you have any symptomps? </td>
+                <td>{{o.query1}}</td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">9</th> -->
+                <td>Have you had a follow up test that was negative for COVID-19 or shows you no longer have
+                    COVID-19? </td>
+                <td>{{o.query2}}</td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">10</th> -->
+                <td>Has it been at least 14 days since the last day of your symptoms (COVID-19 symptoms include
+                    fever, cough and shortness of breath)? </td>
+                <td>{{o.query3}}</td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">11</th> -->
+                <td> Do you taking any certain medication? </td>
+                <td>{{o.query4}}</td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">12</th> -->
+                <td> Did you travel any specific destination outside India in last one month? </td>
+                <td>{{o.query5}}</td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">13</th> -->
+                <td> Recently, Did you had any piercing or tatoo? </td>
+                <td>{{o.query6}}</td>
+              </tr>
+              <tr>
+                <!-- <th scope="row">14</th> -->
+                <td> Are you taking any medical or hospital treatments? </td>
+                <td>{{o.query7}}</td>
+              </tr>
+          
+            </tbody>
+          </table>
+        <!-- <h3> Name:  {{ o.fname }} {{ o.lname }} </h3>
+        <h4> Contact No. : {{ o.mobile }} </h4>
+        <h4>  </h4>
+        <h4> Blood:  {{  o.blood }} </h4>
+        <h4>Age:{{o.age}} </h4>
+        <h4>Gender:{{o.gender}} </h4>
+        <h4>Height:{{o.height}} </h4> -->
+
+      </section>
+
+    {% endif %}
+    {% endfor %}
+</body>
+
+{% elif user.last_name == '0' %}
+
+{{temp.id}} 
+<!-- <h1> {{pk}} </h1> -->
+{% for o in obj %}
+{% if pk == o.id %}
+<div class="row m-auto container justify-content-between">
+  <div class="d-flex">
+    <h1 style="font-weight: bold; letter-spacing: 3px; font-size: 50px; ">{{o.fname}} {{o.lname}}</h1>
+  </div>
+  <div class="d-flex">
+    {% if status.available == True %}
+      <h1 class="text-success"> Available  </h1>
+    {% else %}
+      <h1 class="text-danger"> Not Available  </h1>
+    {% endif %}
+  </div>
+</div>
+<section class="container">
+      
+      
+      <h3 style="font-weight:bold; margin: 10px;" class="text-center">Blood Details</h3>
+      <table class="table table-dark text-center" style="font-weight: bold; font-size: large;">
+        <thead>
+          <tr>
+            <!-- <th scope="col">#</th> -->
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td> {{temp.id}} </td>
+              </tr>
+          <tr style="margin: 2px;">
+            <!-- <th scope="row">1</th> -->
+            <td>RH Type</td>
+            <td> {{temp.rhtype}} </td>
+          </tr>
+          <tr>
+            <!-- <th scope="row">2</th> -->
+            <td>Blood Group</td>
+            <td> {{temp.blood_group}} </td>
+          </tr>
+          <tr>
+            <!-- <th scope="row">3</th> -->
+            <td>Platelet Count</td>
+            <td>{{temp.plate}}</td>
+          </tr>
+          <tr>
+            <!-- <th scope="row">4</th> -->
+            <td>WBC Count</td>
+            <td>{{temp.wbc}}</td>
+          </tr>
+          <tr>
+            <!-- <th scope="row">5</th> -->
+            <td>Antibodies</td>
+            <td>{{temp.antibody}}</td>
+          </tr>
+           
+        </tbody>
+      </table>
+
+      <h3 style="font-weight:bold; margin: 10px;" class="text-center">Queries</h3>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <!-- <th scope="col">#</th> -->
+            <th scope="col">Query</th>
+            <th scope="col">Donor</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <!-- <th scope="row">8</th> -->
+            <td>Currently, Do you have any symptomps? </td>
+            <td>{{o.query1}}</td>
+          </tr>
+          <tr>
+            <!-- <th scope="row">9</th> -->
+            <td>Have you had a follow up test that was negative for COVID-19 or shows you no longer have
+                COVID-19? </td>
+            <td>{{o.query2}}</td>
+          </tr>
+          <tr>
+            <!-- <th scope="row">10</th> -->
+            <td>Has it been at least 14 days since the last day of your symptoms (COVID-19 symptoms include
+                fever, cough and shortness of breath)? </td>
+            <td>{{o.query3}}</td>
+          </tr>
+          <tr>
+            <!-- <th scope="row">11</th> -->
+            <td> Do you taking any certain medication? </td>
+            <td>{{o.query4}}</td>
+          </tr>
+          <tr>
+            <!-- <th scope="row">12</th> -->
+            <td> Did you travel any specific destination outside India in last one month? </td>
+            <td>{{o.query5}}</td>
+          </tr>
+          <tr>
+            <!-- <th scope="row">13</th> -->
+            <td> Recently, Did you had any piercing or tatoo? </td>
+            <td>{{o.query6}}</td>
+          </tr>
+          <tr>
+            <!-- <th scope="row">14</th> -->
+            <td> Are you taking any medical or hospital treatments? </td>
+            <td>{{o.query7}}</td>
+          </tr>
+      
+        </tbody>
+      </table>
+    <!-- <h3> Name:  {{ o.fname }} {{ o.lname }} </h3>
+    <h4> Contact No. : {{ o.mobile }} </h4>
+    <h4>  </h4>
+    <h4> Blood:  {{  o.blood }} </h4>
+    <h4>Age:{{o.age}} </h4>
+    <h4>Gender:{{o.gender}} </h4>
+    <h4>Height:{{o.height}} </h4> -->
+
+  </section>
+
+{% endif %}
+{% endfor %}
+</body>
+
+
+
+
+
+{% endif %}
+
+{%else%}
+
+<h2>Please login to View</h2>
+
+{% endif %}
+
+{% endblock %}

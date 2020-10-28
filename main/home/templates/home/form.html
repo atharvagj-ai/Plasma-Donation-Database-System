@@ -1,0 +1,321 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Form</title>
+</head>
+
+<body id="body">
+    <!-- Alerts   -->
+    <div class="alert alert-dismissible fade  bg-" role="alert" id="alert-success">
+    </div>
+       
+    <!-- End Alerts  -->
+      </div>
+    <section class="container">
+        <div class="section-title my-3 text-center">
+            <h1 id="title">Convalescent Plasma COVID-19 Donor Request Form</h1>
+        </div>
+        <div class="form-body my-3">
+            <form action="/donorhome" method="POST">
+                <div class="form-row container">
+                    <!-- Name  -->
+                    <div class="form-group col-md-6 form-row">
+                        <div class="col-lg-1">
+                            <label><i class="fa fa-user fa-2x"></i></label>
+                        </div>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="firstName" name="fname" placeholder="First Name" required>
+                        </div>
+                        <div class="valid"></div>
+                       <div id="name-alert">
+                           <p></p>
+                       </div>
+                    </div>
+                    <div class="form-group col-md-6 form-row">
+                        <div class="col-lg-1">
+                            <label><i class="fa fa-user fa-2x"></i></label>
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="last_name" name="lname" placeholder="Last Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row container">
+                    <!-- Mobile No.  -->
+                    <div class="form-group col-md-6 form-row">
+                        <div class="col-lg-1">
+                            <label><i class="fa fa-mobile fa-2x"></i></label>
+                        </div>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="10-digit Mobile Number" required>
+                        </div>
+                        <div id="mobile-alert">
+                            <p></p>
+                        </div>
+                    </div>
+                    <!-- Phone Number  -->
+                    <div class="form-group col-md-6 form-row">
+                        <div class="col-lg-1">
+                            <label><i class="fa fa-capsule fa-2x"></i></label>
+                        </div>
+                        <div class="col-md-10">
+                            <label>Blood Group</label>
+                            <select class="custom-select col-lg-6" name="blood" >
+                                <option value="A+">A+</option><option value="A-">A-</option>
+                                <option value="B+">B+</option><option value="B-">B-</option>
+                                <option value="O+">O+</option><option value="O-">O-</option>
+                                <option value="AB+">AB+</option><option value="AB-">AB-</option>
+                                </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form row container">
+                    <label><i class="fa fa-envelope col-lg-1 fa-2x"></i></label>
+                    <input type="email" class="form-control col-lg-10" id="email" name= "email" placeholder="Enter your e-mail">
+                </div>
+
+                <div class="form-row container">
+                    <div class="col-lg-6">
+                        <div class="col-lg-1">
+                            <label>Age</label>
+                        </div>
+                        <input type="text" class="form-control col-lg-6" id="age" placeholder="Age" name="age">
+                    </div>
+                    <div id="age-alert"></div>
+                    <div class="col-lg-6">
+                        <div class="col-lg-1">
+                            <label>Gender</label>
+                        </div>
+                        <select class="custom-select col-lg-6" id="gender" name="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="thirdGender">Third Gender</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- <div class="form-row m-auto">
+                    <div class="col-md-5 form-group">
+                        <label class="col-lg-1">Age</label>
+                        <input type="text" class="form-control" id="age" placeholder="Age">
+                    </div>
+                    <div class="col-md-5 form-group">
+                        <label>Gender</label>
+                        <select class="custom-select my-1" id="gender">
+                            <option selected disabled-value>Choose</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="third_gender ,l]">Third Gender</option>
+                        </select>
+                    </div>
+                </div> -->
+
+                <div class="form-row container">
+                    <!-- Weigth  -->
+                    <div class="col-md-6 form-group">
+                        <label>Weight</label>
+                        <input type="text" class="form-control col-lg-8" name = 'weight' id="weight" placeholder="Weight in kg" required>
+                    </div>
+                    <div class="invalid-feedback">
+                        Enter a valid weight.
+                    </div>
+                    <div id="weigth-alert"></div>
+                    <!-- Height  -->
+                    <div class="col-md-6 form-group">
+                        <label>Height</label>
+                        <input type="text" class="form-control col-lg-8" id="height" placeholder="Height in cm" required>
+                    </div>
+                    <div id="height-alert"></div>
+                </div>
+
+                <div class="form-row container">
+                    <!-- City  -->
+                    <div class="col-lg-6 col-md-6 mb-3">
+                        <label>City</label>
+                        <input type="text" class="form-control col-md-8" name="city" required
+                            placeholder="Enter your City">
+                        <div class="invalid-feedback">
+                            Please provide a valid city.
+                        </div>
+                    </div>
+                    <!-- States  -->
+                    <div class="col-lg-6 col-md-6 mb-3">
+                        <label>State</label><br>
+                        <select class="custom-select col-lg-8" name="state" required>
+                            <option selected disabled value="">Choose</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Assam">Assam</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Chandigarh">Chandigarh</option>
+                            <option value="Chhattisgarh">Chhattisgarh</option>
+                            <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                            <option value="Daman and Diu">Daman and Diu</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Lakshadweep">Lakshadweep</option>
+                            <option value="Puducherry">Puducherry</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Haryana">Haryana</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Manipur">Manipur</option>
+                            <option value="Meghalaya">Meghalaya</option>
+                            <option value="Mizoram">Mizoram</option>
+                            <option value="Nagaland">Nagaland</option>
+                            <option value="Odisha">Odisha</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Sikkim">Sikkim</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Tripura">Tripura</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="Uttarakhand">Uttarakhand</option>
+                            <option value="West Bengal">West Bengal</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid state.
+                        </div>
+                    </div>
+                </div>
+                <!-- Address  -->
+                <div class="container">
+                    <div class="col-lg-12">
+                        <label>Address</label>
+                        <textarea class="form-control" rows="2" name="address" required>
+                       </textarea>
+                    </div>
+                </div>
+                <!-- Query 1 -->
+                <div class="query-1 container my-2" style="padding-top: 10px;">
+                    <h5>* Currently, Do you have any symptomps?</h5>
+                    <div class="col-lg-2">
+                        <select class="custom-select" name="query1" id="query1" required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Query 2  -->
+                <div class="query-2 container my-2" style="padding-top: 10px;">
+                    <h5>* Have you had a follow up test that was negative for COVID-19 or shows you no longer have
+                        COVID-19?</h5>
+                    <div class="col-md-2">
+                        <select name="query2" id="query2" class="custom-select" required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Query 3 -->
+                <div class="query-3 container my-2" style="padding-top: 10px;">
+                    <h5>* Has it been at least 14 days since the last day of your symptoms (COVID-19 symptoms include
+                        fever, cough and shortness of breath)? </h5>
+                    <div class="col-lg-2">
+                        <select class="custom-select" name="query3" id="query3" required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Query 4 -->
+                <div class="query-4 container my-2" style="padding-top: 10px;">
+                    <h5>* Do you taking any certain medication? </h5>
+                    <div class="col-lg-2">
+                        <select class="custom-select" name="query4" id="query4" required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Query 5 -->
+                <div class="query-5 container my-2" style="padding-top: 10px;">
+                    <h5>* Did you travel any specific destination outside India in last one month? </h5>
+                    <div class="col-lg-2">
+                        <select class="custom-select" name="query5" id="query5" required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Query 6  -->
+                <div class="query-6 container my-2" style="padding-top: 10px;">
+                    <h5>* Recently, Did you had any piercing or tatoo? </h5>
+                    <div class="col-lg-2">
+                        <select class="custom-select" name="query6" id="query6" required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Query-7  -->
+                <div class="query-7 container my-2" style="padding-top: 10px;">
+                    <h5>* Are you taking any medical or hospital treatments? </h5>
+                    <div class="col-lg-2">
+                        <select class="custom-select" name="query7" id="query7" required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="container custom-cont">
+                    <h4>Please, attach your COVID recovery cerificate with this form</h4>
+
+                    <div class="custom-file">
+                        
+                        <input type="file" class="custom-file-input" id="inpFile" name="inpFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                        <div class="image-preview" id="image-preview">
+                            <!-- <img src="" alt="Image Preview" class="image-preview__image"> -->
+                            <span id="image-preview__default-text"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container btn">
+                    <div class="col-md-12">
+                        {% csrf_token %}
+                        <button class="btn btn-primary my-3 " type="submit">Submit</button>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+
+
+<!-- Javascript   -->
+<script src="{% static 'js/form.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
