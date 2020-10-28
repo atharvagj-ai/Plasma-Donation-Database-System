@@ -6,6 +6,6 @@ Please refer to the [Project Report](https://github.com/atharvagj-ai/Plasma-Dona
 Visit [Plasma Donation System](http://plasma-donation-system.herokuapp.com/) to use the deployed web app.
 
 Project made by: 
-[Atharva Jibhakate](https://github.com/atharvagj-ai/https://github.com/atharvagj-ai/) 
-[Shivansh Singh](https://github.com/singhsivansh12/)
+[Atharva Jibhakate](https://github.com/atharvagj-ai/https://github.com/atharvagj-ai/), 
+[Shivansh Singh](https://github.com/singhsivansh12/) and
 [Palak Praneet](https://github.com/palakpraneet)
